@@ -540,11 +540,22 @@ firewall-cmd
 		--add-port=<PORT>	permette traffico alla porta/protocollo. Permette --zone
 		--remove-service=<SERV> rimuove il servizio dai permessi della zona specificata
 		--remove-port=<PORT>	rimuove la porta/protocollo dai permessi della zona specificata
-		--reload		Droppa la configurazione runtime e carica la persistent
+		--reload		droppa la configurazione runtime e carica la persistent
+		--add-rich-rule='RULE'	aggiunge una rich rule
+		--remove-rich-rule='R'	rimuove una rich rule
+		--query-rich-rule='RULE'ritorna 0 se la rule è presente nella zona, 1 se no
+		--list-rich-rules	outputta tutte le tule nella zona specificata
 
 Rich rules
-	dai bast
-		--reload		Droppa la configurazione runtime e carica la persistent
-
-Rich rules
-	dai bastaa
+	Le rich rules permettono sintassi più complesse per le rules del firewall.
+	struttura: 
+		rule
+		[source]
+		[destination]
+		service|port|protocol|icmp-block|masquerade|forward-port
+		[log]
+		[audit]
+		[accept|reject|drop]
+	Per altre regole, firewalld.richlanguage(5)
+	Possiamo usare le rich rules anche per loggare roba
+	
