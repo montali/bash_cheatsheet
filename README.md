@@ -86,7 +86,7 @@ Processo per il pattern matching/wildcards.
 ### Pipeline
 Una pipeline `|` permette di passare l'output di un comando all'input di un altro
 
-## Comandi
+## Comandi
 * `date`    mostra i correnti data/ora. Puoi specificare con + il formato desiderato
 * `passwd` passwd modifica la password dell'utente corrente. root può modificarle tutte.
 * `file` su linux le estensioni sono inutili. file analizza l'header di un file per vedere l'estensione
@@ -147,7 +147,7 @@ Contiene le password:
 ### $PATH
 Contiene le location contenenti eseguibili
 
-### $HOME
+### $HOME
 Contiene la home dir
 
 ## Comandi
