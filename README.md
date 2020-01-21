@@ -9,16 +9,16 @@ Cheatsheet per bash in italiano. Realizzato per l'esame di gestione sistemi IT C
 * Gli angle brackets <> rappresentano dati variabili
 
 ### Killare una shell ssh freezata
-* Enter + ~ + .
+`Enter` + `~` + `.`
 
 ### Shortcut per spostarsi
-* ctrl+a	inizio della command line
-* ctrl+e	fine della command line
-* ctrl+u	cancella fino all'inizio
-* ctrl+k    cancella fino alla fine
-* ctrl+sx	vai alla parola precedente
-* ctrl+dx	vai alla parola seguente
-* ctrl+r	cerca nella history
+* `ctrl+a`	inizio della command line
+* `ctrl+e`	fine della command line
+* `ctrl+u`	cancella fino all'inizio
+* `ctrl+k`    cancella fino alla fine
+* `ctrl+sx`	vai alla parola precedente
+* `ctrl+dx`	vai alla parola seguente
+* `ctrl+r`	cerca nella history
 
 ## Comandi
 * `date`    mostra i correnti data/ora. Puoi specificare con + il formato desiderato
