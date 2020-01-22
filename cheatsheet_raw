@@ -558,4 +558,71 @@ Rich rules
 		[accept|reject|drop]
 	Per altre regole, firewalld.richlanguage(5)
 	Possiamo usare le rich rules anche per loggare roba
-	
+
+Ordine delle rules
+	l'ordinamento basic prevede
+		[port farwarding/masquerading]
+		[logging]
+		[deny]
+		[allow]
+	Il primo match vince. Se un pacchetto non matcha nulla, di solito è denied.
+	Le direct rules vengono parsate prima di tutte.	
+
+Logging con rich rules
+	Possiamo loggare le connessioni a syslog o al kernel audit.
+	La sintassi basic per syslog è
+		log [prefix=""] [level=<LEV>] [limit value="<RATE/DURATION>"]
+		Con loglevel= emerg, alert, crit, error, warning, notice, info, debug
+		duration in s, m, h, d (es. 3/m è 3 al minuto)	
+	Sintassi simile è usabile con audit:
+		audit [limit value="<RATE/DURATION>"]
+
+NAT con firewalld
+	firewalld supporta due tipi di NAT: masquerading (IPv4 only) e port forwarding.
+	col primo inoltriamo pacchetti non diretti a noi ad un altro IP, modificandone la source.
+		quando la risposta arriva, li modifichiamo di nuovo con la destination giusta.
+	attiviamo con
+		firewall-cmd --permanent --zone=<ZONE> --add-masquerade
+	o con rich rules.
+
+Port forwarding
+	Questo, invece, inoltra il traffico di una porta ad un'altra porta, interna o esterna
+	Per attivarlo, 
+	firewall-cmd --permanent --zone=<ZONE> --add-forward-port=port=<PORTNO>:proto=<PROTOCOL>[:toport=<PORTNO>][:toaddr=<IPADDR>]
+	Uno dei due tra toport e toaddr va messo.
+
+yum
+	Permette di installare pacchetti da una repo. La configurazione è in /etc/yum.conf o /etc/yum.repos.d
+	Comandi:
+		repolist	elenca le repo, pacchetti, gruppi
+		list installed	pacchetti installati
+		help		aiuto
+		list		pacchetti installati/disponibili
+		search <WORD>	cerca pacchetti per nome/summary
+		search all <W>	cerca anche nella description
+		info <PKGNAME>	restituisce informazioni su un pacchetto
+		provides <PATH>	pacchetti che matchano il pathname
+		install	<PKG>	installa il pacchetto
+		update		updata pacchetti
+		
+Apache HTTPD
+	Il webserver Apache implementa un server con supporto http, estensibile con moduli. 
+	Una volta installato httpd-manual (incluso in httpd), e httpd.service avviato, basta vedere localhost/manual
+	La configurazione default è in /etc/httpd/conf/httpd.conf. Questa serve i contenuti di /var/www/html
+	Per attivare apache systemctl enable httpd.service, poi systemctl start httpd.service
+	Bisogna poi aprire firewalld:	firewall-cmd --permanent --add-service=http --add-service https
+					firewall-cmd --reload
+
+Virtual Hosts
+	I virtual hosts permettono di hostare più domini sullo stesso apache, in base a ip o nome.
+	Per comodità, definiamo i virtual hosts in file a parte in /etc/httpd/conf.d/site1.conf
+
+genkey
+	genera un set di chiavi per TLS con il parametro obbligatorio <FQDN>, il nome di dominio completo.
+	chiede inoltre una lunghezza della chiave (scegliere minimo 2048 bits)
+	sputa fuori 3 file:	<fqdn>.key (chiave privata, deve avere perm 0600 o 0400)
+				<fqdn>.csr file necessario per richiedere la firma a una CA
+				<fqdn>.crt il certificato pubblico per i self-signed. Permessi 0644
+
+HTTPS su Apache	
+	Dobbiamo prima installare il modulo mod_ssl, che genererà una configurazione default (ssl.conf)
