@@ -387,12 +387,12 @@ systemctl
 	Comandi:
 		mask	maschera un servizio per impedirne l'avvio
 		unmask	unmaschera
-		disable
-		enable
+		disable	disabilita a boot
+		enable 	avvia a boot
 		stop
 		start
-		restart
-		reload
+		restart	
+		reload	ricarica config
 		list-dependencies
 
 grep
@@ -626,3 +626,52 @@ genkey
 
 HTTPS su Apache	
 	Dobbiamo prima installare il modulo mod_ssl, che genererà una configurazione default (ssl.conf)
+
+
+
+Docker
+run <IMAGE>
+	esegue un'image in un container, pullandola se necessario
+	dopo, esegue il comando scritto. se non c'è nulla esce subito
+	-it	crea una shell interattiva
+	-e	aggiunge un'env
+	-P 	pubblica a porte random
+	-p	pubblica a porte arbitrarie
+	--name	sceglie un nome
+	-v	binda un volume (-v local/folder:container/folder oppure /contfolder per Docker volume)
+	
+ps
+	Visualizza tutti i container attivi
+	-a	mostra anche i non attivi
+
+images
+	Mostra le images salvate localmente
+
+search
+	Cerca images su docker hub
+
+rm <HASH/NAME>
+	elimina un container stoppato
+
+rmi <IMAGE>
+	elimina un'image
+
+stop
+	stoppa un container
+
+rename <NOME1> <NOME2>
+	rinomina un container
+	
+pull
+	pulla un'immagine da registry
+
+save -o <filename>.tar <NOMECONT>
+	Esporta l'image ad un archivio
+port
+	mostra le porte associate
+
+Utilizzo con nginx
+	per avviare nginx: docker run --detach -p 80:80 --name web nginx:latest
+
+
+	

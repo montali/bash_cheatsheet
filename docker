@@ -1,0 +1,25 @@
+services:
+  mysqldb:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: exercise12
+      MYSQL_USER: student
+      MYSQL_PASSWORD: stUdEnE2020
+  wpwebsite:
+    depends_on:
+      - mysqldb
+    image: wordpress:latest
+    volumes:
+      - ./worpress:/var/www/html
+    ports:
+      - "8080:80"
+    restart: always
+    environment:
+       WORDPRESS_DB_HOST: mysqldb:3306
+       WORDPRESS_DB_USER: student
+       WORDPRESS_DB_PASSWORD: stUdEnE2020
+       WORDPRESS_DB_NAME: exercise12
