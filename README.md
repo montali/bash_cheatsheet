@@ -530,14 +530,14 @@ Dobbiamo prima installare il modulo mod_ssl, che genererà una configurazione de
 # Docker
 ## Comandi
 * `run <IMAGE>` esegue un'image in un container, pullandola se necessario. Dopo, esegue il comando scritto, se non c'è nulla esce subito.
- * `-it` crea una shell interattiva
- * `-e` aggiunge un'env
- * `-P` pubblica a porte random
- * `-p` pubblica a porte arbitrarie
- * `--name` sceglie un nome
- * `-v` binda un volume (-v local/folder:container/folder oppure /contfolder per Docker volume)
+  * `-it` crea una shell interattiva
+  * `-e` aggiunge un'env
+  * `-P` pubblica a porte random
+  * `-p` pubblica a porte arbitrarie
+  * `--name` sceglie un nome
+  * `-v` binda un volume (-v local/folder:container/folder oppure /contfolder per Docker volume)
 * `ps` visualizza tutti i container attivi
- * `-a` mostra anche i non attivi
+  * `-a` mostra anche i non attivi
 * `images` mostra le images salvate localmente
 * `search` cerca images su docker hub
 * `rm <HASH/NAME>` elimina un container stoppato
