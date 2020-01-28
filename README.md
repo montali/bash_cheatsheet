@@ -248,7 +248,7 @@ WhoWhatWhich
 ### Mandare processi in background
 Per mandare un processo in background, Ctrl+z
 
-## Load Averages
+## Load Averages
 Rappresenta il carico del sistema negli ultimi 1,5,15 minuti, sulla base dei running e uninterruptible
 Tutte le CPU sono sommate, in quanto i processi si potrebbero spostare da una all'altra
 Linux conta ogni core/hyperthread come una CPU a parte, con request queues separate
@@ -348,19 +348,19 @@ for <VARIABLE> in <LIST>; do <COMMAND> done
 Aggiungiamo -x a #!/bin/bash per attivare il debug, o -x all'esecuzione
 Possiamo anche usare l'istruzione "set +x" e "set -x" nello script
 
-## Parametri posizionali
+## Parametri posizionali
 I parametri posizionali salvano i valori degli argomenti command-line
 0 contiene lo script name, i seguenti gli argomenti
 $* contiene tutti gli argomenti insieme
 $@ contiene gli argomenti separati
 $# contiene il numero di argomenti passati
 
-## Exit codes
+## Exit codes
 Possiamo uscire dallo script con codice. 0 è tutto ok, gli altri no. 
 L'exit code viene salvato nella variabile $?
 Usciamo dallo script con exit n
 
-## Test degli input
+## Test degli input
 è good practice verificare gli input con le espressioni
 `["$a" -eq "$b"]`
  * Opzioni:
@@ -412,18 +412,18 @@ Possibile l'else if
 Possibile il multi condizionale:
 `case <VALUE> in <PATTERN1>) <COMMAND> ;; <PATTERN2>) <COMMAND>;; *) <DEFCOMMAND> ;; esac`
 
-## export
+## export
 Permette di esportare variabili all'environment
 
-## Differenza tra profile e RC
+## Differenza tra profile e RC
 Solitamente, usiamo profile per settare ed esportare l'environment, RC per eseguire comandi
 profile è eseguito alla login shell, RC ogni volta che una shell è creata, login o non login
 
-## alias
+## alias
 alias permette di definire comandi personalizzati
 Per renderli permanenti, li aggiungiamo a .bashrc
 
-## Funzioni
+## Funzioni
 possiamo definire semplici funzioni con la notazione classica di C
 Definirle in `.bashrc` equivale ad usarle come comandi
 
@@ -479,7 +479,7 @@ Le rich rules permettono sintassi più complesse per le rules del firewall.
 Per altre regole, firewalld.richlanguage(5)
 Possiamo usare le rich rules anche per loggare roba
 
-### Ordine delle rules
+### Ordine delle rules
 L'ordinamento basic prevede
   * `[port farwarding/masquerading]`
   * `[logging]`
