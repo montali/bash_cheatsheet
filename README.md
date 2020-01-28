@@ -198,9 +198,9 @@ Essi vengono filtrati dalla umask della shell, che rimuove i campi specificati
 ## Comandi
 * `chmod` modifica i permessi di di un file (-R per directory ricorsivamente)
 WhoWhatWhich
- * Who	u(ser), g(roup), o(ther), a(ll)
- * What	+, -, =
- * Which	r, w, x
+  * Who	u(ser), g(roup), o(ther), a(ll)
+  * What	+, -, =
+  * Which	r, w, x
 
 * `chown` modifica il possessore del file (il possessore solo root, il gruppo anche user che vi appartengono)
 	:	specifica il gruppo
@@ -215,17 +215,17 @@ WhoWhatWhich
 # Processi
 ## Stati di un processo
 * Running
- * `R` TASK_RUNNING: sta eseguendo sulla CPU o attendendo di eseguire
+  * `R` TASK_RUNNING: sta eseguendo sulla CPU o attendendo di eseguire
 * Sleeping
- * `S` TASK_INTERRUPTIBLE: sta aspettando qualche condizione hw/sw
- * `D` TASK_UNINTERRUPTIBLE: non risponde ai segnali. condizioni eccezionali.
- * `K` TASK_KILLABLE: identico a D, ma risponde ai SIGKILL
+  * `S` TASK_INTERRUPTIBLE: sta aspettando qualche condizione hw/sw
+  * `D` TASK_UNINTERRUPTIBLE: non risponde ai segnali. condizioni eccezionali.
+  * `K` TASK_KILLABLE: identico a D, ma risponde ai SIGKILL
 * Stopped
- * `T` TASK_STOPPED: il processo è stato stoppato e può essere ripristinato
- * `T` TASK_TRACED: appare durante le pause di debug
+  * `T` TASK_STOPPED: il processo è stato stoppato e può essere ripristinato
+  * `T` TASK_TRACED: appare durante le pause di debug
 * Zombie
- * `Z` EXIT_ZOMBIE: segnala al parent mentre esce. Tutte le risorse eccesso il PID rilasciate
- * `X` EXIT_DEAD: una volta che il parent ha pulito, il processo è rimosso del tutto. Transitorio.
+  * `Z` EXIT_ZOMBIE: segnala al parent mentre esce. Tutte le risorse eccesso il PID rilasciate
+  * `X` EXIT_DEAD: una volta che il parent ha pulito, il processo è rimosso del tutto. Transitorio.
 
 ## Job
 * Associato ad ogni pipeline, tutti i processi della pipeline sono parte del job. 
@@ -257,12 +257,12 @@ Una CPU idle ha load 0; ogni processo aggiunge 1.
 
 ## Comandi
 * `ps` mostra i processi correnti.
- * `-a` processi associati al terminale
- * `-u` mostra l'utente collegato al processo
- * `aux` mostra tutti i processi, con user e processi senza terminale
- * `lax` mostra tutti i processi con dettagli
- * `j` mostra i jobs
- * `--sort` sorta i processi
+  * `-a` processi associati al terminale
+  * `-u` mostra l'utente collegato al processo
+  * `aux` mostra tutti i processi, con user e processi senza terminale
+  * `lax` mostra tutti i processi con dettagli
+  * `j` mostra i jobs
+  * `--sort` sorta i processi
 * `&` Possiamo avviare un comando in background inserendo una & alla fine. Ci verrà mostrato il PID.
 * `jobs` Permette di vedere i jobs della sessione
 * `fg` Permette di portare un job in foreground tramite il suo id (%ID)
@@ -270,42 +270,42 @@ Una CPU idle ha load 0; ogni processo aggiunge 1.
 * `kill` Invia un segnale a un processo selezionato da ID
 * `killall` Invia un segnale a tutti i processi che matchano un `pattern` 
 * `pkill` Come killall ma con filtri più avanzati 
- * `-` killa tutti i processi di un utente
+  * `-` killa tutti i processi di un utente
 * `w` lista gli utenti correntemente loggati e le loro attività cumulative.
  * Tutti hanno un terminale principale, listato come pts/N per GUI o ttyN per terminali.
- * `-f` mostra il connecting system
+  * `-f` mostra il connecting system
 * `top` mostra i processi di sistema dinamicamente, con un refresh continuo
  * Dati mostrati:
-  * `PID`	Process ID
-  * `USER` username
-  * `VIRT` memoria virtuale utilizzata, includendo il resident set, shared libs, swap
-  * `RES` memoria fisica utilizzata
-  * `S` Process state: D (uninterruptable), R (running), S (sleeping), T (stopped/traced), Z(zombie)
-  * `TIME` Tempo di processo CPU
-  * `COMMAND` command name
+   * `PID`	Process ID
+   * `USER` username
+   * `VIRT` memoria virtuale utilizzata, includendo il resident set, shared libs, swap
+   * `RES` memoria fisica utilizzata
+   * `S` Process state: D (uninterruptable), R (running), S (sleeping), T (stopped/traced), Z(zombie)
+   * `TIME` Tempo di processo CPU
+   * `COMMAND` command name
 * `systemd` fornisce un metodo per attivare risorse di sistema, daemons...
 * `systemctl` gestisce gli oggetti di systemd, detti units. Alcune tipologie di units:
-  * .service rappresenta un system service -> avvia frequently accessed daemons
-  * .socket rappresenta socket di comunicazione inter-processo. 
-  * .path utilizzati per ritardare l'attivazione di un servizio finché avviene uno specifico cambiamento di file
+   * .service rappresenta un system service -> avvia frequently accessed daemons
+   * .socket rappresenta socket di comunicazione inter-processo. 
+   * .path utilizzati per ritardare l'attivazione di un servizio finché avviene uno specifico cambiamento di file
  * Opzioni:
-  * status	Mostra lo status di un servizio
-  * --type	Mostra lo status di determinato type (service/socket/path)
-  * is-active
-  * is-enabled
-  * list-units
-  * list-unit-files
-  * --failed
+   * status	Mostra lo status di un servizio
+   * --type	Mostra lo status di determinato type (service/socket/path)
+   * is-active
+   * is-enabled
+   * list-units
+   * list-unit-files
+   * --failed
  * Comandi:
-  * mask	maschera un servizio per impedirne l'avvio
-  * unmask	unmaschera
-  * disable	disabilita a boot
-  * enable 	avvia a boot
-  * stop
-  * start
-  * restart	
-  * reload	ricarica config
-  * list-dependencies
+   * mask	maschera un servizio per impedirne l'avvio
+   * unmask	unmaschera
+   * disable	disabilita a boot
+   * enable 	avvia a boot
+   * stop
+   * start
+   * restart	
+   * reload	ricarica config
+   * list-dependencies
 ### Daemon
 Processo che gira in background, avviato al boot, funziona fino allo shutdown. 
 Per convenzione, finiscono per d
@@ -317,16 +317,16 @@ Canale di comunicazione con client locali e remoti. Creabile da daemons, o separ
 Si riferisce di solito a uno o più daemon, ma avviare/stoppare un servizio fa un one-time change allo stato del sistema, che non richiede un daemon.
 
 # Ricerca
-* `grep` permette di utilizzare RegEx per isolare dati matchanti
+`grep` permette di utilizzare RegEx per isolare dati matchanti
  * utilizzo basic: grep 'RegEx' /file
  * utilizzo piped: ps aux | grep '^student'
  * Opzioni:
-  * -i disattiva case sensitivity
-  * -v Inverti la ricerca
-  * -r ricerca ricorsiva
-  * -A mostra n linee dopo il match
-  * -B mostra n linee prima del match
-  * -e multiple regex con or
+   * -i disattiva case sensitivity
+   * -v Inverti la ricerca
+   * -r ricerca ricorsiva
+   * -A mostra n linee dopo il match
+   * -B mostra n linee prima del match
+   * -e multiple regex con or
 * `which` mostra il path dell'eseguibile di un comando
 
 # Scripts
@@ -364,37 +364,37 @@ Usciamo dallo script con exit n
 è good practice verificare gli input con le espressioni
 `["$a" -eq "$b"]`
  * Opzioni:
-  * `-eq`	uguale
-  * `-ne`	diverso
-  * `-gt`	maggiore	
-  * `-lt`	minore
-  * `-ge`	maggiore uguale
-  * `-le`	minore uguale
+   * `-eq`	uguale
+   * `-ne`	diverso
+   * `-gt`	maggiore	
+   * `-lt`	minore
+   * `-ge`	maggiore uguale
+   * `-le`	minore uguale
  * Opzioni per stringhe:
-  * `=` uguale a
-  * `==`	uguale a
-  * `!=`	diverso
+   * `=` uguale a
+   * `==`	uguale a
+   * `!=`	diverso
  * Opzioni unary:
-  * `-z`	lunghezza zero
-  * `-n`	not null
+   * `-z`	lunghezza zero
+   * `-n`	not null
  * Opzioni unary per file:
-  * `-b`	il file esiste ed è block special
-  * `-c`	il file esiste ed è char special	
-  * `-d` 	esiste ed è una directory	
-  * `-e`	esiste
-  * `-f`	file regolare
-  * `-L`	esiste ed è un symbolic link
-  * `-r`	esiste ed è permessa la lettura
-  * `-s`	esiste ed ha size > 0
-  * `-w`	esiste ed è permessa la scrittura	
-  * `-x`	esiste ed è permessa l'esecuzione
+   * `-b`	il file esiste ed è block special
+   * `-c`	il file esiste ed è char special	
+   * `-d` 	esiste ed è una directory	
+   * `-e`	esiste
+   * `-f`	file regolare
+   * `-L`	esiste ed è un symbolic link
+   * `-r`	esiste ed è permessa la lettura
+   * `-s`	esiste ed ha size > 0
+   * `-w`	esiste ed è permessa la scrittura	
+   * `-x`	esiste ed è permessa l'esecuzione
  * Opzioni binarie per file:	
-  * `-ef`	stesso device ed inode
-  * `-nt`	modification date più nuova
-  * `-ot`	modification date più vecchia
+   * `-ef`	stesso device ed inode
+   * `-nt`	modification date più nuova
+   * `-ot`	modification date più vecchia
  * Leganti:
-  * `$$	and`
-  * `|| 	or`
+   * `$$	and`
+   * `|| 	or`
 
 ## if/fi
 if permette di definire le condizioni così:
@@ -433,38 +433,38 @@ Definirle in `.bashrc` equivale ad usarle come comandi
  * In ordine, matcha: indirizzo source, interfaccia, default.
  * La zona di default è di solito la zona public. 
  * Configurazioni di default:
-  * `trusted`
-  * `home`
-  * `internal`
-  * `work`
-  * `public`
-  * `external`
-  * `dmz`
-  * `block`	
-  * `drop`
+   * `trusted`
+   * `home`
+   * `internal`
+   * `work`
+   * `public`
+   * `external`
+   * `dmz`
+   * `block`	
+   * `drop`
 Modifichiamo firewalld con `firewall-cmd` o con i file `/etc/firewalld`. (meglio la prima)
 
 ## firewall-cmd
  * Opzioni:
-  * `--get-default-zone` auto-explainatory
-  * `--set-default-zone`=ZONE cambia sia runtime che permanent
-  * `--get-zones` lista tutte le zone disponibili
-  * `--get-services` lista i servizi predefiniti
-  * `--add-source=<CIDR>`  routa tutto il traffico dall'ip alla zona specificata con `--zone=<>`, o default
-  * `--remove-source=<CIDR>` rimuove la rule legata al CIDR. possiamo specificare la zona da rimuovere
-  * `--add-interface=<INT>` routa tutto il traffico dall'interfaccia alla zona, se non spec. default
-  * `--change-interface=<INT>` associa l'interfaccia con la zona specificata al posto di quella di ora
-  * `--list-all` lista tutte le interfacce, source, servizi, porte per `--zone=<ZONE`>
-  * `--list-all-zones` lista tutto per tutte le zone
-  * `--add-service=<SERV>` permette il traffico a `<SERV>`, possibile specificare `--zone`
-  * `--add-port=<PORT>` permette traffico alla porta/protocollo. Permette `--zone`
-  * `--remove-service=<SERV>` rimuove il servizio dai permessi della zona specificata
-  * `--remove-port=<PORT>` rimuove la porta/protocollo dai permessi della zona specificata
-  * `--reload` droppa la configurazione runtime e carica la persistent
-  * `--add-rich-rule='RULE'` aggiunge una rich rule
-  * `--remove-rich-rule='R'` rimuove una rich rule
-  * `--query-rich-rule='RULE'` ritorna 0 se la rule è presente nella zona, 1 se no
-  * `--list-rich-rules` outputta tutte le tule nella zona specificata
+   * `--get-default-zone` auto-explainatory
+   * `--set-default-zone`=ZONE cambia sia runtime che permanent
+   * `--get-zones` lista tutte le zone disponibili
+   * `--get-services` lista i servizi predefiniti
+   * `--add-source=<CIDR>`  routa tutto il traffico dall'ip alla zona specificata con `--zone=<>`, o default
+   * `--remove-source=<CIDR>` rimuove la rule legata al CIDR. possiamo specificare la zona da rimuovere
+   * `--add-interface=<INT>` routa tutto il traffico dall'interfaccia alla zona, se non spec. default
+   * `--change-interface=<INT>` associa l'interfaccia con la zona specificata al posto di quella di ora
+   * `--list-all` lista tutte le interfacce, source, servizi, porte per `--zone=<ZONE`>
+   * `--list-all-zones` lista tutto per tutte le zone
+   * `--add-service=<SERV>` permette il traffico a `<SERV>`, possibile specificare `--zone`
+   * `--add-port=<PORT>` permette traffico alla porta/protocollo. Permette `--zone`
+   * `--remove-service=<SERV>` rimuove il servizio dai permessi della zona specificata
+   * `--remove-port=<PORT>` rimuove la porta/protocollo dai permessi della zona specificata
+   * `--reload` droppa la configurazione runtime e carica la persistent
+   * `--add-rich-rule='RULE'` aggiunge una rich rule
+   * `--remove-rich-rule='R'` rimuove una rich rule
+   * `--query-rich-rule='RULE'` ritorna 0 se la rule è presente nella zona, 1 se no
+   * `--list-rich-rules` outputta tutte le tule nella zona specificata
   
 ## Rich rules
 Le rich rules permettono sintassi più complesse per le rules del firewall.
