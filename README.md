@@ -285,27 +285,27 @@ Una CPU idle ha load 0; ogni processo aggiunge 1.
    * `COMMAND` command name
 * `systemd` fornisce un metodo per attivare risorse di sistema, daemons...
 * `systemctl` gestisce gli oggetti di systemd, detti units. Alcune tipologie di units:
-   * .service rappresenta un system service -> avvia frequently accessed daemons
-   * .socket rappresenta socket di comunicazione inter-processo. 
-   * .path utilizzati per ritardare l'attivazione di un servizio finché avviene uno specifico cambiamento di file
+   * `.service` rappresenta un system service -> avvia frequently accessed daemons
+   * `.socket` rappresenta socket di comunicazione inter-processo. 
+   * `.path` utilizzati per ritardare l'attivazione di un servizio finché avviene uno specifico cambiamento di file
  * Opzioni:
-   * status	Mostra lo status di un servizio
-   * --type	Mostra lo status di determinato type (service/socket/path)
-   * is-active
-   * is-enabled
-   * list-units
-   * list-unit-files
-   * --failed
+   * `status	`Mostra lo status di un servizio
+   * `--type`	Mostra lo status di determinato type (service/socket/path)
+   * `is-active`
+   * `is-enabled`
+   * `list-units`
+   * `list-unit-files`
+   * `--failed`
  * Comandi:
-   * mask	maschera un servizio per impedirne l'avvio
-   * unmask	unmaschera
-   * disable	disabilita a boot
-   * enable 	avvia a boot
-   * stop
-   * start
-   * restart	
-   * reload	ricarica config
-   * list-dependencies
+   * `mask` maschera un servizio per impedirne l'avvio
+   * `unmask` unmaschera
+   * `disable` disabilita a boot
+   * `enable` avvia a boot
+   * `stop`
+   * `start`
+   * `restart`	
+   * `reload` ricarica config
+   * `list-dependencies`
 ### Daemon
 Processo che gira in background, avviato al boot, funziona fino allo shutdown. 
 Per convenzione, finiscono per d
